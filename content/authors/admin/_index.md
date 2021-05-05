@@ -23,8 +23,13 @@ interests:
 
 # Education to show in About widget
 education:
-  - MSU Faculty of physics (2017-2019)
-  - RUDN Faculty of scince (2019-now)
+  courses:
+  - course: Basic Physics course
+    institution: MSU, Faculty of Physics
+    year: 2017-2019
+  - course: Fundumental Informatics
+    institution: RUDN
+    year: 2019-now
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
