@@ -20,6 +20,7 @@ bio: Struggling student. 2 year.
 interests:
 - Programming languages C#, C++, Java
 - Learning English and French
+- embroidery
 
 # Education to show in About widget
 education:
@@ -28,8 +29,8 @@ education:
     institution: MSU, Faculty of Physics
     year: 2017-2019
   - course: Fundumental Informatics
-    institution: RUDN
-    year: 2019-now
+    institution: RUDN / PFUR
+    year: 2019-present
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -39,18 +40,18 @@ social:
 - icon: envelope
   icon_pack: fas
   link: '/#contact'
-- icon: twitter
+- icon: orcid
   icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
-- icon: graduation-cap  # Alternatively, use `google-scholar` icon from `ai` icon pack
-  icon_pack: fas
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://orcid.org/0000-0002-1015-1932
+- icon: researchgate
+  icon_pack: fab
+  link: https://www.researchgate.net/profile/Alina-Ishanova
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
-- icon: linkedin
-  icon_pack: fab
-  link: https://www.linkedin.com/
+  link: https://github.com/AIIshanova
+- icon: academia
+  icon_pack: ai
+  link: https://independent.academia.edu/AlinaIshanova
 
 # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/media/resume.pdf`, enable `ai` icons in `params.toml`, 
