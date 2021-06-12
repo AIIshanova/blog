@@ -67,92 +67,92 @@ Each member of the population typically progresses from susceptible to infectiou
 ### if-else
 
 >>
-function res = SIR(S0,I0,Ik,R0,a,b,tk)
-    # getting parameters in ODE
-    rate2 = @(t,state) rate(t,state,Ik,a,b);
+    function res = SIR(S0,I0,Ik,R0,a,b,tk)
+         # getting parameters in ODE
+        rate2 = @(t,state) rate(t,state,Ik,a,b);
     
-    # solving ODE system
-    [T,state] = ode23(rate2,[0,tk],[S0,I0,R0]); #soulving Cauchy problem
+        # solving ODE system
+        [T,state] = ode23(rate2,[0,tk],[S0,I0,R0]); #soulving Cauchy problem
 
-    # extracting separate system parameters
-    S = state(:,1);
-    I = state(:,2);
-    R = state(:,3);
+        # extracting separate system parameters
+        S = state(:,1);
+        I = state(:,2);
+        R = state(:,3);
 
-    # drawing a graph
-    hold on
-    plot(T,S,'b')
-    plot(T,I,'r')
-    plot(T,R,'g')
-    xlabel('Time')
-    ylabel('Number of people')
-    legend('S - Susceptible', 'I - Infectious', 'R - Recovered')
-    title("SIR-model")
-end
+       # drawing a graph
+        hold on
+        plot(T,S,'b')
+        plot(T,I,'r')
+        plot(T,R,'g')
+        xlabel('Time')
+        ylabel('Number of people')
+        legend('S - Susceptible', 'I - Infectious', 'R - Recovered')
+        title("SIR-model")
+    end
 
- `# ODE system
-function res = rate(t,state,Ik,a,b)
-    #getting all initial stages
-    s = state(1);
-    i = state(2);
-    r = state(3);
+     `# ODE system
+    function res = rate(t,state,Ik,a,b)
+        #getting all initial stages
+        s = state(1);
+        i = state(2);
+        r = state(3);
     
-    # 
-    if (i > Ik)
-           dsdt = -a*s;
-           didt = a*s-b*i;
-           drdt = b*i;
-      else dsdt = 0;
-           didt = -b*i;
-           drdt = b*i;
-    endif
-    #
-    # packing up everything
-    res = [dsdt;didt;drdt];
-end
+        # ODE system
+        if (i > Ik)
+              dsdt = -a*s;
+              didt = a*s-b*i;
+              drdt = b*i;
+          else dsdt = 0;
+               didt = -b*i;
+               drdt = b*i;
+         endif
+        #
+        # packing up everything
+        res = [dsdt;didt;drdt];
+    end
 >>
 
 ### heaviside
 
 >>
-function res = SIR(S0,I0,Ik,R0,a,b,tk)
-    # getting parameters in ODE
-    rate2 = @(t,state) rate(t,state,Ik,a,b);
+    function res = SIR(S0,I0,Ik,R0,a,b,tk)
+        # getting parameters in ODE
+        rate2 = @(t,state) rate(t,state,Ik,a,b);
     
-    # solving ODE system
-    [T,state] = ode23(rate2,[0,tk],[S0,I0,R0]); #soulving Cauchy problem
+        # solving ODE system
+        [T,state] = ode23(rate2,[0,tk],[S0,I0,R0]); #soulving Cauchy problem
 
-    # extracting separate system parameters
-    S = state(:,1);
-    I = state(:,2);
-    R = state(:,3);
+        # extracting separate system parameters
+       S = state(:,1);
+       I = state(:,2);
+       R = state(:,3);
 
-    # drawing a graph
-    hold on
-    plot(T,S,'b')
-    plot(T,I,'r')
-    plot(T,R,'g')
-    xlabel('Time')
-    ylabel('Number of people')
-    legend('S - Susceptible', 'I - Infectious', 'R - Recovered')
-    title("SIR-model")
-end
+        # drawing a graph
+        hold on
+        plot(T,S,'b')
+        plot(T,I,'r')
+        plot(T,R,'g')
+        xlabel('Time')
+        ylabel('Number of people')
+        legend('S - Susceptible', 'I - Infectious', 'R - Recovered')
+        title("SIR-model")
+    end
 
- `# ODE system
-function res = rate(t,state,Ik,a,b)
-    #getting all initial stages
-    s = state(1);
-    i = state(2);
-    r = state(3);
+     `# ODE system
+    function res = rate(t,state,Ik,a,b)
+        #getting all initial stages
+        s = state(1);
+        i = state(2);
+        r = state(3);
     
-    # 
-    dsdt = heaviside(i-Ik)*(-a*s);
-    didt = heaviside(i-Ik)*(a*s)-b*i;
-    drdt = b*i;
-    #
-    # packing up everything
-    res = [dsdt;didt;drdt];
-end
+        # 
+        dsdt = heaviside(i-Ik)*(-a*s);
+        didt = heaviside(i-Ik)*(a*s)-b*i;
+        drdt = b*i;
+        #
+        # packing up everything
+        res = [dsdt;didt;drdt];
+    end
 >>
 
 ## Sources
