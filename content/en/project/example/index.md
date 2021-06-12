@@ -1,6 +1,6 @@
 ---
 title: Group project
-summary: Priject № 5 "Epidemic"
+summary: Project № 5 "Epidemic"
 tags:
 - Group project
 date: "2021-05-08T00:00:00Z"
