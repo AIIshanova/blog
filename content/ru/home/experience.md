@@ -14,7 +14,7 @@ subtitle:
 
 # Date format for experience
 #   Refer to https://wowchemy.com/docs/customization/#date-format
-date_format: Jan 2006
+date_format: 01/02/06
 
 # Experiences.
 #   Add/remove as many `experience` items below as you like.
@@ -25,11 +25,11 @@ experience:
   - title: староста
     company: РУДН
     company_url: ''
-    location: Moscow
+    location: Москва
     date_start: '2019-09-01'
     date_end: ''
     description: |2-
-        Responsibilities include:
+        Обязанности:
         
         * создание и заполнение кучи файлов формата exel
         * информирование студентов, донесение приказов

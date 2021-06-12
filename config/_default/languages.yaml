@@ -7,6 +7,7 @@ en:
   languageCode: en-us
   # Uncomment for multi-lingual sites, and move English content into `en` sub-folder.
   contentDir: content/en
+  title: Ishanova A.I.
 ru:
   languageCode: ru
   contentDir: content/ru
