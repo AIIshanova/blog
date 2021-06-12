@@ -1,41 +1,202 @@
 ---
-title: Example Project
-summary: An example of using the in-built project page.
+title: Групповой проект <Этап 1>
+summary: Проект № 5 "Задача об эпидемии"
 tags:
-- Deep Learning
-date: "2016-04-27T00:00:00Z"
+- Group project
+date: "2021-05-08T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).
-external_link: ""
+#external_link: ""
 
-image:
-  caption: Photo by rawpixel on Unsplash
-  focal_point: Smart
+#image:
+#  caption: Photo by rawpixel on Unsplash
+#  focal_point: Smart
 
-links:
-- icon: twitter
-  icon_pack: fab
-  name: Follow
-  url: https://twitter.com/georgecushen
-url_code: ""
-url_pdf: ""
-url_slides: ""
-url_video: ""
+#links:
+#- icon: twitter
+#  icon_pack: fab
+#  name: Follow
+#  url: https://twitter.com/georgecushen
+#url_code: ""
+#url_pdf: ""
+#url_slides: ""
+#url_video: ""
 
 # Slides (optional).
 #   Associate this project with Markdown slides.
 #   Simply enter your slide deck's filename without extension.
 #   E.g. `slides = "example-slides"` references `content/slides/example-slides.md`.
 #   Otherwise, set `slides = ""`.
-slides: example
+#slides: content/slides
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.
+Co-authors: Smorodova D., Shutenko V., Surtzov S. and Firtsov I.
 
-Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.
+## Модель
 
-Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.
+### Модель $SIR$
 
-Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.
+- Компартментная
 
-Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.
+- $S \rightarrow I \rightarrow R$, где $S$ - число  особей, восприимчивых к болезни
+
+- Переменные  $S, I, R$  кол-во людей в каждой группе в определенное время/состояние системы, следовательно они функции от времени $S(t), I(t), R(t)$
+
+- Система задается:
+  - $N -$ число особей в популяции
+  - $S(0) -$ число восприимчивых к болезни особей на момент начала эпидемии
+  - $I(0) -$ число инфицированных особей на момент начала эпидемии
+  - По умолчанию $R(0)=0$, $R(0) -$ число особей с иммунитетом к болезни на момент начала эпидемии
+  - $I^* -$  критическое значение заболевших
+
+## Описание системы (уравнения)
+
+### Система 1. Скорость изменения числа особей, восприимчивых к болезни
+
+$$\frac{dS}{dt} = \begin{cases} -\alpha S, I(t) > I^* \\ 0, I(t) \leq I^*\end{cases} $$
+
+- $S -$ число  особей, восприимчивых к болезни
+
+- $\alpha$ - коэффициент заболеваемости
+
+- $I(t) -$ число инфицированных особей  в момент времени  $t$
+
+- $I^* -$ критическое значение заболевших
+
+### Система 2. Скорость изменения числа инфекцированных особей
+
+$$\frac{dI}{dt} = \begin{cases} \alpha S - \beta I, I(t) > I^* \\ - \beta I, I(t) \leq I^*\end{cases} $$
+
+- $S -$ число  особей, восприимчивых к болезни
+
+- $\alpha$ - коэффициент заболеваемости
+
+- $\beta$ - коэффициент выздоровления
+
+- $I(t) -$ число инфицированных особей  в момент времени  $t$
+
+- $I^* -$ критическое значение заболевших
+
+### Уравнение скорости изменения выздоравливающих особей
+
+$$\frac{dR}{dt} = \beta I $$
+
+- $\beta$ - коэффициент выздоровления
+
+- $I -$ число инфицированных особей
+
+### Уравнение при условии закрытия границ города
+
+$$ I(t) + S(t) + R(t) = const = N $$
+
+- $I(t) -$ число инфицированных особей  в момент времени  $t$
+
+- $S(t) -$ число восприимчивых к болезни особей в момент времени  $t$
+
+- $S(t) -$ число особей с иммунитетом к болезни в момент времени  $t$
+
+- $N -$ число жителей города
+
+## Исследование модели
+
+![Общий случай](p2.jpeg){ #fig1: width=80% }
+
+### Особые случаи
+
+- $I(t) < I^*$, $R(t)\uparrow$ при $t\uparrow$ и $S(t)=const$ при $\forall t$
+
+![случай $I(t) < I^*$](p1.jpeg){ #fig1: width=80% }
+
+- Параметр $\alpha$ - коэффициент заболеваемости влияет на то, как быстро произойдет пик количества заболевших (чем больше $\alpha$, тем раньше пик, а чем раньше пик, тем он больше, так как меньше людей с иммунитетом)
+
+- $\alpha=0$
+  - $S(t)=const=S(0)$ $\Rightarrow$ $\frac{dI}{dt}<0$ при $\forall t$
+  - $-\frac{dI}{dt}=\frac{dR}{dt}$
+  - $|\frac{dI}{dt}|\downarrow$ при $t\uparrow$
+
+- $\alpha=1$
+  - мгновенный пик количества заболевших
+  - $\lim_{t\to0^+}S(t)=0$
+  - $\lim_{t\to0^+}I(t)=N$
+  - и затем сразу же $-\frac{dI}{dt}=\frac{dR}{dt}$, $|\frac{dI}{dt}|\downarrow$ при $t\uparrow$
+
+- Параметр $\beta$ - коэффициент выздоровления влияет на то, как быстро количество зараженных/больных стремиться к нулю
+  
+- $\beta=0$
+  - $R(t)=const=0$
+  - $I(t)\rightarrow N$, $S(t)\rightarrow 0$
+  - $I(\infty)=const=N$
+
+- $\beta=1$
+  - мгновенное исцеление
+  - $\lim_{t\to0^+}I(t)=0$
+  - $\lim_{t\to0^+}R(t)=I(0)$
+
+### Анализ
+
+1. $\alpha<\beta$
+    - при $S \leq 2I$ выздоравливают быстрее чем заражаются $\Rightarrow$ эпидемия затухает
+    - при $S > 2I$ заражаются быстрее чем выздоравливают $\Rightarrow$ эпидемия разгорается
+2. $\alpha>\beta$
+    - при $S \geq 2I$ заражаются быстрее чем выздоравливают $\Rightarrow$ эпидемия разгорается
+    - при $S < 2I$ выздоравливают быстрее чем заражаются $\Rightarrow$ эпидемия затухает
+3. $\alpha=\beta$
+    - при $S > 2I$ заражаются быстрее чем выздоравливают $\Rightarrow$ эпидемия разгорается
+    - при $S < 2I$ выздоравливают быстрее чем заражаются $\Rightarrow$ эпидемия затухает
+    - при $S = 2I$ $\Rightarrow$ $\frac{dI}{dt}=\frac{dR}{dt}$ и $\frac{dR}{dt} \geq 0$ $\forall t$ $\Rightarrow$ $\frac{dI}{dt} \geq 0$ $\Rightarrow$ состояние невозможно поддерживать, так как $\frac{dS}{dt} \leq 0$ $\forall t$
+
+### Ассимтотические исследования
+
+- Так как в нашей модели отсутсвует повторная заболеваемость, то чем дольше длиться эпидемия
+  - $R(t)\uparrow$ и $S(t)\downarrow$ $\Rightarrow$ $I(t)\downarrow$
+  - Причем, при длительной эпидемии пик количества заболевших пройден, а следовательно $\frac{dI}{dt}<0$ и $|\frac{dI}{dt}|\downarrow$
+  - А если $I(t)\downarrow$ то $\frac{dR}{dt}\downarrow$
+  - Таким образом $I(\infty) \rightarrow 0$ и $R(\infty) \rightarrow N$ $\Rightarrow$ $S(\infty)\rightarrow 0$
+
+## Задача
+
+### Случай а) начальное число зараженных/болеющих меньше критического
+
+Известно, что из всех проживающих в городе $(N=10000)$ в момент начала эпидемии $(t=0)$ число заболевших испанкой людей (являющихся распространителями инфекции) $I(0)= 20$, А число здоровых людей с иммунитетом к болезни $R(0)=0$. Таким образом, число людей восприимчивых к болезни, но пока здоровых, в начальный момент времени $S(0) = N-I(0)= 9980$. Считаем, что после выявления болезни, город сразу же закрыли. При этом коэффициент заболеваемости $\alpha$ = 0.1, а коэффициент выздоровления $\beta$ = 0.05.
+
+### Случай б) начальное число зараженных/болеющих больше критического
+
+Известно, что из всех проживающих в городе $(N=10000)$ в момент начала эпидемии $(t=0)$ число заболевших испанкой людей (являющихся распространителями инфекции) $I(0)= 3000$, А число здоровых людей с иммунитетом к болезни $R(0)=0$. Таким образом, число людей восприимчивых к болезни, но пока здоровых, в начальный момент времени
+$S(0)=N-I(0)=7000$. Считаем, что после выявления болезни, город сразу же закрыли. При этом коэффициент заболеваемости $\alpha$ = 0.1, а коэффициент выздоровления $\beta$ = 0.05.
+
+### Система в условиях нашей задачи
+
+$$\frac{dS}{dt} = \begin{cases} - 0.1 * S, I(t) > I^* \\ 0, I(t) \leq I^*\end{cases} $$
+
+- $S -$ число  особей, восприимчивых к болезни
+
+- $I(t) -$ число инфицированных особей  в момент времени  $t$
+
+- $I^* -$ критическое значение заболевших
+
+$$\frac{dI}{dt} = \begin{cases} - 0.1 * S - 0.05 * I, I(t) > I^* \\ - 0.05 * I, I(t) \leq I^*\end{cases} $$
+
+- $S -$ число  особей, восприимчивых к болезни
+
+- $I(t) -$ число инфицированных особей  в момент времени  $t$
+
+- $I^* -$ критическое значение заболевших
+
+$$\frac{dR}{dt} = 0.05 * I $$
+
+- $I -$ число инфицированных особей
+
+$$ I(t) + S(t) + R(t) = const = N = 10000 $$
+
+- $I(t) -$ число инфицированных особей  в момент времени  $t$
+
+- $S(t) -$ число восприимчивых к болезни особей в момент времени  $t$
+
+- $S(t) -$ число особей с иммунитетом к болезни в момент времени  $t$
+
+- $N -$ число жителей города
+
+## Библиография
+
+1. Compartmental models in epidemiology - https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology
+2. *А.В. Гаврилина , С.В. Соколов* - Анализ SIR-модели распространения заболеваний, pp 229-232, 2018.
