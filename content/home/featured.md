@@ -1,4 +1,3 @@
-<!---
 ---
 # An instance of the Featured widget.
 # Documentation: https://wowchemy.com/docs/page-builder/
@@ -35,4 +34,3 @@ design:
   #   4 = Citation (publication only)
   view: 3
 ---
--->
