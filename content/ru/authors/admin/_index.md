@@ -19,7 +19,9 @@ bio: Второкурсница.
 # Interests to show in About widget
 interests:
 - Программирование на языках C#, C++, Java
-- Изучение англиского и французского
+- Изучение английского и французского
+- Компьютерные игры
+- Рукоделие
 
 # Education to show in About widget
 education:
@@ -68,4 +70,4 @@ highlight_name: false
 
 Алина Ишанова студентка второго курса РУДН, Фундаментальная информатика.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Скачайте мое {{< staticref "media/demo_resume.pdf" "newtab" >}}резюме{{< /staticref >}}.
