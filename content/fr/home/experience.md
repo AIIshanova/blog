@@ -9,7 +9,7 @@ headless: true
 # Order that this section appears on the page.
 weight: 40
 
-title: Experience
+title: Expérience
 subtitle:
 
 # Date format for experience
@@ -22,19 +22,19 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-  - title: praepostor/monitor
+  - title: préposteur
     company: RUDN
     company_url: ''
-    location: Moscow
+    location: Moscou
     date_start: '2019-09-01'
     date_end: ''
     description: |2-
-        Responsibilities include:
+        Les responsabilités comprennent:
         
-        * making a lot of exel files
-        * informing other students
-        * working with teaching personnel
-        * generally suffering from people's stupidity
+        * faire beaucoup de fichiers exel
+        * informer les autres étudiants
+        * travailler avec le personnel enseignant
+        * souffrant généralement de la bêtise des gens
 
 design:
   columns: '2'
